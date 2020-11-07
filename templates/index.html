@@ -9,7 +9,7 @@
 		<title>Swipe Tourism</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/main.css')}}">
 	</head>
 	<body>
 
@@ -24,6 +24,7 @@
             <ul class="links">
                 <li><a href="{{url_for('mainpage')}}">Home</a></li>
                 <li><a href="{{url_for('login')}}">Liked Places</a></li>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
             </ul>
         </nav>
 
@@ -99,7 +100,7 @@
 			<section id="three" class="wrapper style2">
 				<div class="inner">
 					<header class="align-center">
-						<p class="special">Nam vel ante sit aasdfasd met libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
+						<p class="special"> </p>
 						<h2>Morbi maximus justo</h2>
 					</header>
 					<div class="gallery">
@@ -144,11 +145,11 @@
 			</footer>
 
 		<!-- Scripts -->
-		<script src="{{ url_for('static', filename='assets/js/jquery.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/skel.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/util.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/jquery.scrollex.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/skel.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/util.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/main.js')}}"></script>
 
 	</body>
 </html>

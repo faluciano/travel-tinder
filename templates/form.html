@@ -2,13 +2,13 @@
 {% block title %}Login{% endblock %} 
 {% block content%}
 <form action="#" method="post">
-    <div class = "info">
-        <input class = 'fname' type="text" name="nm" placeholder="What's your name?">
+    <div  class = "info">
+        <input style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px;" class = 'fname' type="text" name="nm" placeholder="What's your name?">
     </div>
     <div class = "info">
-        <input class = 'fname' type="text" name="location" placeholder="Where you want to travel">
+        <input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;"  class = 'fname' type="text" name="location" placeholder="Where you want to travel">
     </div>
-    <div class="info">
+    <div style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" class="info">
       <select name ="placetype">
         <option value="None" disabled selected>Type of Places</option>
         <option value="amusement_park">Amusement Park</option>
@@ -27,11 +27,11 @@
       </select>
     </div>
 
-    <h3>What price range are you looking for?</h3>
+    <h3 style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" >What price range are you looking for?</h3>
     <div class="info"> 
-        <input type="text" name="minprice" placeholder="Min Price">
-        <input type="text" name="maxprice" placeholder="Max Price">
+        <input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" type="text" name="minprice" placeholder="Min Price">
+        <input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" type="text" name="maxprice" placeholder="Max Price">
     </div>
-    <button class="button" type=submit value="submit">Submit</button>
+    <button style = "margin-left: 25px; margin-bottom: 25px;" class="button" type=submit value="submit">Submit</button>
 </form>
 {% endblock %}
