@@ -15,17 +15,17 @@
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">Swipe Tourism <span>by Felix & Andrew</span></a></div>
+				<div class="logo"><a href="{{url_for('mainpage')}}">Swipe Tourism <span>by Felix & Andrew</span></a></div>
 				<a href="#menu">Menu</a>
 			</header>
 
 		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Liked Places</a></li>
-				</ul>
-			</nav>
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="{{url_for('mainpage')}}">Home</a></li>
+                <li><a href="{{url_for('login')}}">Liked Places</a></li>
+            </ul>
+        </nav>
 
 		<!-- Banner -->
 			<section class="banner full">
@@ -33,44 +33,8 @@
 					<img src="{{ url_for('static', filename='images/slide01.jpg') }}" alt="" />
 					<div class="inner">
 						<header class="headerClass">
-							<h3>Find A Fun Place To Travel!</h3>
-							<h4><a href="elements.html">Get Started</a></h4>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="{{ url_for('static', filename='images/slide02.jpg') }}" alt="" />
-					<div class="inner">
-						<header>
-							<p>Lorem ipsum dolor sit amet nullam feugiat</p>
-							<h2>Magna etiam</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="{{ url_for('static', filename='images/slide03.jpg') }}"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Sed cursus aliuam veroeros lorem ipsum nullam</p>
-							<h2>Tempus dolor</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="{{ url_for('static', filename='images/slide04.jpg') }}"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Adipiscing lorem ipsum feugiat sed phasellus consequat</p>
-							<h2>Etiam feugiat</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="{{ url_for('static', filename='images/slide05.jpg') }}"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Ipsum dolor sed magna veroeros lorem ipsum</p>
-							<h2>Lorem adipiscing</h2>
+							<h2>Find A New Place To Travel!</h2>
+							<h2><a style="color: rgb(19, 230, 166)" href="{{ url_for('register') }}">Get Started</a>/<a style="color: rgb(19, 230, 166)" href="{{ url_for('login') }}">Log In</a></h2>
 						</header>
 					</div>
 				</article>
@@ -84,14 +48,14 @@
 						<div>
 							<div class="box">
 								<div class="image fit">
-									<img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt="" />
+									<img src="{{ url_for('static', filename='images/Tokyo.jpg') }}" alt="" />
 								</div>
 								<div class="content">
 									<header class="align-center">
-										<p>maecenas sapien feugiat ex purus</p>
-										<h2>Lorem ipsum dolor</h2>
+										<p>Felix's Favorite</p>
+										<h2>Tokyo, Japan</h2>
 									</header>
-									<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
+									<p> One of the most unforgetable experiances that I had was in the TeamLab Borderless Museum. Going through this museum is like stepping into another dimension. There are amazing visuals that pictures can never do justice. </p>
 									<footer class="align-center">
 										<a href="#" class="button alt">Learn More</a>
 									</footer>
@@ -102,14 +66,14 @@
 						<div>
 							<div class="box">
 								<div class="image fit">
-									<img src="{{ url_for('static', filename='images/pic03.jpg') }}" alt="" />
+									<img src="{{ url_for('static', filename='images/HighLine.jpg') }}" alt="" />
 								</div>
 								<div class="content">
 									<header class="align-center">
-										<p>mattis elementum sapien pretium tellus</p>
-										<h2>Vestibulum sit amet</h2>
+										<p>Andrew's Favorite'</p>
+										<h2>Manhattan, New York City</h2>
 									</header>
-									<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
+									<p> Manhattan is a place filled with people. There are tons of different tourist attractions that can fit anyones wants. One of my personal favorites is called "The High Line". It's a beautiful park that I love to wonder through with my family. </p>
 									<footer class="align-center">
 										<a href="#" class="button alt">Learn More</a>
 									</footer>
@@ -125,8 +89,8 @@
 			<section id="two" class="wrapper style3">
 				<div class="inner">
 					<header class="align-center">
-						<p>Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
-						<h2>Morbi maximus justo</h2>
+						<h2>Our Hackathon Project</h2>
+						<p>HackNJIT 2020</p>
 					</header>
 				</div>
 			</section>
@@ -135,7 +99,7 @@
 			<section id="three" class="wrapper style2">
 				<div class="inner">
 					<header class="align-center">
-						<p class="special">Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
+						<p class="special">Nam vel ante sit aasdfasd met libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urnaNam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
 						<h2>Morbi maximus justo</h2>
 					</header>
 					<div class="gallery">

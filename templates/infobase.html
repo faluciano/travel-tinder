@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/form.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/main.css')}}">
+    <style>
+        body {
+          background-image: url('https://i.imgur.com/RASQmSP.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+    </style>
+  </head>
+  <body>
+    <header id="header" class="alt">
+        <div class="logo"><a href="index.html">Swipe Tourism <span>by Felix & Andrew</span></a></div>
+        <a href="#menu">Menu</a>
+    </header>
+    <nav id="menu">
+        <ul class="links">
+            <li><a href="{{url_for('mainpage')}}">Home</a></li>
+            <li><a href="generic.html">Liked Places</a></li>
+        </ul>
+    </nav>
+    <div class="main-block">
+        {% block content %} 
+        {% endblock %}
+    </div>
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/skel.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/util.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
+  </body>
+</html>

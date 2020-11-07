@@ -3655,6 +3655,7 @@
 
 /* Header */
 
+    
 	body.subpage {
 		padding-top: 3.25em;
 	}
@@ -4166,6 +4167,16 @@
 			}
 
 				.banner > article h2:after {
+					display: none;
+				}
+			.banner > article h3 {
+				font-size: 5rem;
+				margin-bottom: 0;
+				color: #FFF;
+				font-weight: 300;
+			}
+
+				.banner > article h3:after {
 					display: none;
 				}
 

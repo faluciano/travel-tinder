@@ -1,0 +1,13 @@
+{% extends "infobase.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<form action="#" method="post">
+  <div class = "info">
+      <input class = 'fname' type="text" name="email" placeholder="Enter your email" required>
+  </div>
+  <div class = "info">
+      <input class = 'fname' name="password" placeholder="Enter a password" type="password" minlength="6" required>
+  </div>
+  <button class="button" type=submit value="submit">Register</button>
+</form>
+{% endblock %}
