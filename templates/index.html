@@ -23,7 +23,8 @@
         <nav id="menu">
             <ul class="links">
                 <li><a href="{{url_for('mainpage')}}">Home</a></li>
-                <li><a href="{{url_for('login')}}">Liked Places</a></li>
+				<li><a href="{{url_for('liked')}}">Liked Places</a></li>
+				<li><a href="{{url_for('generic')}}">Find Places</a></li>
                 <li><a href="{{url_for('logout')}}">Logout</a></li>
             </ul>
         </nav>
@@ -100,7 +101,7 @@
 			<section style="padding-top: 75px;" id="three" class="wrapper style2">
 				<div class="inner">
 					<header class="align-center">
-						<p style="color:rgb(88, 88, 88); font-size:100%;" class="special"> For this years NJIT Hackathon we decided to create an easy way to look for a place to travel around the world. When we asked ourselves "If you could go anywhere in the world, where would you go?", we would say places like Paris or Abu Dhabi. But we didn't know much about the many things we could do when we got there or how to find new people who wanted to explore together. So we decided to create this website. Here you can search for fun activities to do in places you are interested in traveling to, while also finding new friends along the way! </p>
+						<p style="color:rgb(88, 88, 88);" class="special"> For this years NJIT Hackathon we decided to create an easy way to look for a place to travel around the world. When we asked ourselves "If you could go anywhere in the world, where would you go?", we would say places like Paris or Abu Dhabi. But we didn't know much about the many things we could do when we got there or how to find new people who wanted to explore together. So we decided to create this website. Here you can search for fun activities to do in places you are interested in traveling to, while also finding new friends along the way! </p>
 						<h2>Our Hacking Setups</h2>
 					</header>
 					<div class="gallery">
@@ -123,15 +124,9 @@
 			<footer id="footer">
 				<div class="container">
 					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						<li><a href="url('https://github.com/AndAmir')" class="icon fa-github"><span class="label">Andrew's Github</span></a></li>
+						<li><a href="url('https://github.com/faluciano')" class="icon fa-github"><span class="label">Felix's Github</span></a></li>
 					</ul>
-				</div>
-				<div class="copyright">
-					&copy; Untitled. All rights reserved.
-				</div>
 			</footer>
 
 		<!-- Scripts -->

@@ -19,7 +19,8 @@
 			<nav  id="menu">
 				<ul class="links">
 					<li><a href="{{url_for('mainpage')}}">Home</a></li>
-                	<li><a href="{{url_for('login')}}">Liked Places</a></li>
+					<li><a href="{{url_for('liked')}}">Liked Places</a></li>
+					<li><a href="{{url_for('generic')}}">Find Places</a></li>
                 	<li><a href="{{url_for('logout')}}">Logout</a></li>
 				</ul>
 			</nav>
@@ -62,16 +63,19 @@
 			<!--<section style=":100%; background-image: url('https://i.imgur.com/RASQmSP.jpg');" id="two" class="wrapper style2">-->
 				{% if loop %}
 				{% for i in range(places|length) %}
-				<form>
-				<div style="border-color: rgb(41, 41, 41); float:left; margin-left: 12.25%; margin-bottom:5%;" class="box gallery">
+				<form action="#" method="post">
+				<div id="some{{i}}" style="max-width:300px; border-color: rgb(41, 41, 41); float:left; margin-left: 9%; margin-bottom:5%;" class="box gallery">
 					<div style="width: 100%; padding:0px; background-image: url({{places[i]['photo'] }}); background-size: cover;" class="card">
 						<a href="#" class="overlay"></a>
 						<a class="thumb" href="#">
+						
 						<div class="info">
 							<h2><a href="#">{{ places[i]["name"]}}</a></h2>
-							<div class="foot">
-								<a style="width:40%;" class="social"><button>Like</button></a>
+							<div style="margin-left:5%;" class="foot">
+								<input style="visibility: hidden;" name="{{ i }}" value="{{ places[i] }}" type="text"></input>
 								<a style="width:40%;" class="social"><button>Pass</button></a>
+								<a style="width:40%; float:right;" type ="submit" class="social"><button>Like</button></a>
+								
 							</div>
 						</div>
 					</div>	
@@ -98,11 +102,10 @@
 		-->
 
 		<!-- Scripts -->
-		<script src="{{ url_for('static', filename='assets/js/jquery.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/skel.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/util.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
-
+		<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/jquery.scrollex.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/skel.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/util.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/main.js')}}"></script>
 	</body>
 </html>

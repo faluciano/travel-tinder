@@ -5,9 +5,29 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/card.css')}}">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/main.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/main.css')}}">
+        <style>
+            .container {padding: 2rem 0rem;}
+			h4 {margin: 2rem 0rem 1rem;}
+			img {
+				max-width: 10em;
+				height: auto;
+				padding-bottom: 0%;
+				padding-top: 5%;
+				}
+			td{
+				padding-top: 5%;
+				padding-bottom: 10%;
+				color:white;
+				font-size: 30px;
+				vertical-align: middle;
+			}
+			th{
+				color:white;
+			}
+        </style>
 	</head>
-	<body class="subpage">
+	<body style="background-image: url(../static/images/chalkboard.jpg);" class="subpage">
 
 		<!-- Header -->
 			<header id="header">
@@ -19,7 +39,8 @@
 			<nav  id="menu">
 				<ul class="links">
 					<li><a href="{{url_for('mainpage')}}">Home</a></li>
-                	<li><a href="{{url_for('login')}}">Liked Places</a></li>
+					<li><a href="{{url_for('liked')}}">Liked Places</a></li>
+					<li><a href="{{url_for('generic')}}">Find Places</a></li>
                 	<li><a href="{{url_for('logout')}}">Logout</a></li>
 				</ul>
 			</nav>
@@ -32,53 +53,33 @@
 					</header>
 				</div>
 			</section>
-			<form style = " float:left; margin-left: 38%; margin-bottom: 5%; margin-right: 20%;" action="#" method="post">
-				<div class = "info">
-					<h3 style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px; color:rgb(238, 238, 238);">Where do you want to travel {{ name }}?</h3>
-					<input style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px; max-width: 75%; color: rgb(0, 0, 0); background-color: rgba(255, 255, 255,.3);"  class = 'fname' type="text" name="location" placeholder="Where you want to travel" required>
-				</div>
-				<h3 style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px;color:rgb(238, 238, 238);">What type of places are you interested in?</h3>	
-				<div style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px; color: rgb(0, 0, 0); background-color: rgba(255, 255, 255,.3); max-width: 75%; " class="info">
-				  <select name ="placetype" required>
-					<option class="specialColor" value="" selected disabled>Type of Places to Visit</option>
-					<option class="specialColor" value="amusement_park">Amusement Park</option>
-					<option class="specialColor" value="art_gallery">Art Gallery</option>
-					<option class="specialColor" value="campground">Camping</option>
-					<option class="specialColor" value="casino">Casino</option>
-					<option class="specialColor" value="library">Library</option>
-					<option class="specialColor" value="museum">Museum</option>
-					<option class="specialColor" value="park">Park</option>
-					<option class="specialColor" value="restaurant">Restaurant</option>
-					<option class="specialColor" value="shopping_mall">Shopping Mall</option>
-					<option class="specialColor" value="spa">Spa</option>
-					<option class="specialColor" value="stadium">Stadium</option>
-					<option class="specialColor" value="tourist_attraction">Tourist Attraction</option>
-					<option class="specialColor" value="zoo">Zoo</option>
-				  </select>
-				</div>
-				<button style = "margin-left: 25px; margin-bottom: 25px;" class="button" type=submit value="submit">Submit</button>
-			</form>
-		<!-- Two -->
-			<!--<section style=":100%; background-image: url('https://i.imgur.com/RASQmSP.jpg');" id="two" class="wrapper style2">-->
-				{% if loop %}
-				{% for i in range(places|length) %}
-				<form>
-				<div style="border-color: rgb(41, 41, 41); float:left; margin-left: 12.25%; margin-bottom:5%;" class="box gallery">
-					<div style="width: 100%; padding:0px; background-image: url({{places[i]['photo'] }}); background-size: cover;" class="card">
-						<a href="#" class="overlay"></a>
-						<a class="thumb" href="#">
-						<div class="info">
-							<h2><a href="#">{{ places[i]["name"]}}</a></h2>
-							<div class="foot">
-								<a style="width:40%;" class="social"><button>Like</button></a>
-								<a style="width:40%;" class="social"><button>Pass</button></a>
-							</div>
-						</div>
-					</div>	
-				</div>
-				</form>
-				{% endfor %}
-				{% endif %}
+			<div class="container">
+                <div class="row">
+                  <div class="col-12">
+                      <table class="table table-image">
+                        <thead>
+                          <tr>
+                            <th style="color:white; font-size: 20px;" scope="col">Picture</th>
+                            <th style="color:white; font-size: 20px;" scope="col">Name</th>
+                            <th style="color:white; font-size: 20px;" scope="col">Address</th>
+                            <th style="color:white; font-size: 20px;" scope="col">Rating</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+							{% for i in range(places|length) %}
+							<tr>
+								<td class="w-25">
+									<img src="{{ places[i]['photo']}}">
+								</td>
+								<td>{{ places[i]['name'] }}</td>
+								<td>{{ places[i]['address'] }}</td>
+						  	</tr>
+							{% endfor %}
+                        </tbody>
+                      </table>   
+                  </div>
+                </div>
+              </div>
 			<!--</section>-->
 
 		<!-- Footer 
@@ -98,11 +99,11 @@
 		-->
 
 		<!-- Scripts -->
-		<script src="{{ url_for('static', filename='assets/js/jquery.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/skel.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/util.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/main.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/jquery.scrollex.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/skel.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/util.js')}}"></script>
+		<script src="{{ url_for('static', filename='js/main.js')}}"></script>
 
 	</body>
 </html>

@@ -3,11 +3,13 @@ from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 import os
 import googlemaps
+import json
+
 app = Flask(__name__) 
 seckey = os.urandom(12)
 app.secret_key=seckey
 key = os.environ["googleapikey"]
-app.permanent_session_lifetime = timedelta(minutes = 10)
+app.permanent_session_lifetime = timedelta(minutes = 30)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.sqlite3"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
@@ -19,16 +21,16 @@ class users(db.Model):
     name = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
-    preferences = db.Column(db.String(100),default ="") #places saved
+    preferences = db.Column(db.String(1000),default ="") #places saved
     def __init__(self,email,name,password):
         self.email = email
         self.name = name
         self.password = password
-    @property
-    def preferences(self):
+    
+    def get_preferences(self):
         return [str(x) for x in self.preferences.split(";")]
-    @preferences.setter
-    def preferences(self,val):
+    
+    def set_preferences(self,val):
         self.preferences += ";" +str(val)
 '''
 @app.route("/preferences",methods = ["POST","GET"])  
@@ -50,6 +52,7 @@ def login():
             
             session["login"] = True
             session["name"] = q.name
+            session["email"] = q.email
             app.permanent = True
             redirect(url_for("generic"))
         return  redirect(url_for("login"))
@@ -59,6 +62,7 @@ def login():
 @app.route("/logout")
 def logout():
     session.clear()
+    print(session)
     return redirect(url_for("mainpage"))
 
 @app.route("/register",methods = ["POST","GET"])  
@@ -74,6 +78,7 @@ def register():
             db.session.commit()
             session["login"] = True
             session["name"] = name
+            session["email"] = email
             return redirect(url_for("login"))
         return redirect(url_for("register.html"))
     else:
@@ -91,27 +96,53 @@ def use():
         x+=f"<p>{user.email}</p>"
         x+=f"<p>{user.name}</p>"
         x+=f"<p>{user.password}</p>"
+        x+=f"<p>{user.get_preferences()}</p>"
     return x
 
 @app.route("/generic",methods = ["POST","GET"])
 def generic():
+    if "login" not in session or session["login"] == False:
+        return redirect(url_for("login"))
     name = "dude"
-    listplc = []
+    if "curr" in session:
+        listplc = session["curr"]
+    else:
+        listplc = []
     if "name" in session:
         name = session["name"]
     if request.method == "POST":
-        location = request.form["location"]
-        placetype = request.form["placetype"]
-        loc = tuple(gmaps.geocode(address = location)[0]["geometry"]["location"].values())
-        plac = gmaps.places(query = "",location = loc,language="en",type = placetype)
-        listplc = []
-        print(plac,"hi")
-        for i in plac["results"]:
-            if "photos" in i and "formatted_address" in i and "name" in i:
-                listplc.append({"name":i["name"],"address":i["formatted_address"],"photo":"https://maps.googleapis.com/maps/api/place/photo?maxheight=385&maxwidth=300&photoreference="+i["photos"][0]["photo_reference"]+"&key="+key})
-        return render_template("generic.html",name = name,loop=True,places = listplc)
+        for i in range(20):
+            if str(i) in request.form:
+                user = users.query.filter_by(email = session["email"]).first()
+                user.set_preferences(request.form[str(i)])
+                db.session.commit()
+        if "location" in  request.form and "placetype" in request.form:
+            location = request.form["location"]
+            placetype = request.form["placetype"]
+            loc = tuple(gmaps.geocode(address = location)[0]["geometry"]["location"].values())
+            plac = gmaps.places(query = "",location = loc,language="en",type = placetype)
+            listplc = []
+            for i in plac["results"]:
+                if "photos" in i and "formatted_address" in i and "name" in i:
+                    listplc.append({"name":i["name"],"address":i["formatted_address"],"photo":"https://maps.googleapis.com/maps/api/place/photo?maxheight=385&maxwidth=300&photoreference="+i["photos"][0]["photo_reference"]+"&key="+key})
+            session["curr"] = listplc
+            return render_template("generic.html",name = name,loop=True,places = listplc)
+        return render_template("generic.html",name = name,loop=True,places=listplc)
+    
     return render_template("generic.html",name = name,loop = False, places = listplc)
 
+@app.route("/liked")
+def liked():
+    if "login" not in session or session["login"]!= True:
+        return redirect(url_for("login"))
+    user = users.query.filter_by(email = session["email"]).first()
+    lst = user.get_preferences()[1:]
+    rtls = []
+    for i in lst:
+        print(type(i))
+        rtls.append(json.loads(i.replace("\'","\"") ))
+    print(rtls)
+    return render_template("liked.html",places = rtls)
 if __name__ == "__main__":
     db.create_all()
     app.run(debug = True)
