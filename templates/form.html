@@ -2,36 +2,12 @@
 {% block title %}Login{% endblock %} 
 {% block content%}
 <form action="#" method="post">
-    <div  class = "info">
-        <input style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px;" class = 'fname' type="text" name="nm" placeholder="What's your name?">
+    <div class = "info">
+        <input style = "margin-left: 25px; margin-bottom: 25px;  margin-top: 25px; margin-right: 25px; color: rgb(202, 202, 202);" class = 'fname' type="text" name="email" placeholder="Enter your email" required>
     </div>
     <div class = "info">
-        <input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;"  class = 'fname' type="text" name="location" placeholder="Where you want to travel">
+        <input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px; color: rgb(202, 202, 202);" class = 'fname' name="password" placeholder="Enter a password" type="password" minlength="6" required>
     </div>
-    <div style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" class="info">
-      <select name ="placetype">
-        <option value="None" disabled selected>Type of Places</option>
-        <option value="amusement_park">Amusement Park</option>
-        <option value="art_gallery">Art Gallery</option>
-        <option value="campground">Camping</option>
-        <option value="casino">Casino</option>
-        <option value="library">Library</option>
-        <option value="museum">Museum</option>
-        <option value="park">Park</option>
-        <option value="restaurant">Restaurant</option>
-        <option value="shopping_mall">Shopping Mall</option>
-        <option value="spa">Spa</option>
-        <option value="stadium">Stadium</option>
-        <option value="tourist_attraction">Tourist Attraction</option>
-        <option value="zoo">Zoo</option>
-      </select>
-    </div>
-
-    <h3 style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" >What price range are you looking for?</h3>
-    <div class="info"> 
-        <input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" type="text" name="minprice" placeholder="Min Price">
-        <input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;" type="text" name="maxprice" placeholder="Max Price">
-    </div>
-    <button style = "margin-left: 25px; margin-bottom: 25px;" class="button" type=submit value="submit">Submit</button>
+    <button style = "margin-left: 25px; margin-bottom: 25px; " class="button" type=submit value="submit">Login</button>
 </form>
 {% endblock %}

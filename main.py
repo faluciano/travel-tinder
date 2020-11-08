@@ -16,19 +16,40 @@ class users(db.Model):
     name = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
+    preferences = db.Column(db.String(100),default ="") #places saved
     def __init__(self,email,name,password):
         self.email = email
         self.name = name
         self.password = password
-
-@app.route("/login",methods = ["POST","GET"])  
-def login():
+    @property
+    def preferences(self):
+        return [str(x) for x in self.preferences.split(";")]
+    @preferences.setter
+    def preferences(self,val):
+        self.preferences += ";" +str(val)
+'''
+@app.route("/preferences",methods = ["POST","GET"])  
+def preferences():
     if "login" in session and session["login"] == True:
         return redirect(url_for("mainpage"))
     if request.method == "POST":
-        session["login"] = True
-        app.permanent = True
         return  redirect(url_for("mainpage"))
+    else:
+        return render_template("preferences.html")
+'''
+@app.route("/login",methods = ["POST","GET"])  
+def login():
+    if "login" in session and session["login"] == True:
+        return redirect(url_for("generic"))
+    if request.method == "POST":
+        q = users.query.filter_by(email = request.form["email"]).first()
+        if q and q.password == request.form["password"]:
+            
+            session["login"] = True
+            session["name"] = q.name
+            app.permanent = True
+            redirect(url_for("generic"))
+        return  redirect(url_for("login"))
     else:
         return render_template("form.html")
 
@@ -41,19 +62,38 @@ def logout():
 def register():
     if request.method == "POST":
         email = request.form["email"]
+        name = request.form["name"]
         password = request.form["password"]
-        return render_template("register.html")
+        found_user = users.query.filter_by(email = email).first()
+        if not found_user:
+            usr = users(email,name,password)
+            db.session.add(usr)
+            db.session.commit()
+            session["login"] = True
+            session["name"] = name
+            return redirect(url_for("login"))
+        return redirect(url_for("register.html"))
     else:
         return render_template("register.html") 
 
 @app.route("/")
 def mainpage():
     return render_template("index.html")
-'''
-@app.route("/generic")
-def masdfpage():
-    return render_template("generic.html")
-'''
+@app.route("/allusers")
+def use():
+    m = users.query.all()
+    x = ""
+    for user in m:
+        print(user)
+    return "d"
+
+@app.route("/generic",methods = ["POST","GET"])
+def generic():
+    name = "dude"
+    if "name" in session:
+        name = session["name"]
+    return render_template("generic.html",name = name)
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug = True)

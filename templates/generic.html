@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Hielo by TEMPLATED</title>
+		<title>Swipe Tourism</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/main.css')}}">
@@ -22,22 +22,52 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="{{url_for('mainpage')}}">Home</a></li>
+                	<li><a href="{{url_for('login')}}">Liked Places</a></li>
+                	<li><a href="{{url_for('logout')}}">Logout</a></li>
 				</ul>
 			</nav>
 
 		<!-- One -->
-			<section id="One" class="wrapper style3">
+			<section style="padding-top:1em ; padding-bottom: 2em;"; id="One" class="wrapper style3">
 				<div class="inner">
 					<header class="align-center">
-						<p>Eleifend vitae urna</p>
-						<h2>Generic Page Template</h2>
+						<h2>Explore the World</h2>
 					</header>
 				</div>
 			</section>
-
+			<form style = "margin-left: 20%; margin-bottom: auto;" action="#" method="post">
+				<div class = "info">
+					<h3 style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px;">Where do you want to travel {{ name }}?</h3>
+					<input style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px; max-width: 75%;"  class = 'fname' type="text" name="location" placeholder="Where you want to travel">
+				</div>
+				<h3 style = "margin-left: 25px; margin-bottom: 25px; margin-top: 25px; margin-right: 25px;">What type of places are you interested in?</h3>	
+				<div style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px; color: rgb(202, 202, 202);max-width: 75%; " class="info">
+				  <select name ="placetype">
+					<option value="None" disabled selected>Type of Places to Visit</option>
+					<option value="amusement_park">Amusement Park</option>
+					<option value="art_gallery">Art Gallery</option>
+					<option value="campground">Camping</option>
+					<option value="casino">Casino</option>
+					<option value="library">Library</option>
+					<option value="museum">Museum</option>
+					<option value="park">Park</option>
+					<option value="restaurant">Restaurant</option>
+					<option value="shopping_mall">Shopping Mall</option>
+					<option value="spa">Spa</option>
+					<option value="stadium">Stadium</option>
+					<option value="tourist_attraction">Tourist Attraction</option>
+					<option value="zoo">Zoo</option>
+				  </select>
+				</div>
+			
+				<h3 style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px;">What price range are you looking for?</h3>
+				<div class="info"> 
+					<input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px; color: rgb(202, 202, 202);max-width: 75%;" type="text" name="minprice" placeholder="Min Price">
+					<input style = "margin-left: 25px; margin-bottom: 25px; margin-right: 25px; color: rgb(202, 202, 202);max-width: 75%;" type="text" name="maxprice" placeholder="Max Price">
+				</div>
+				<button style = "margin-left: 25px; margin-bottom: 25px;" class="button" type=submit value="submit">Submit</button>
+			</form>
 		<!-- Two -->
 			<section id="two" class="wrapper style2">
 				<div class="inner">
@@ -47,11 +77,6 @@
 								<p>maecenas sapien feugiat ex purus</p>
 								<h2>Lorem ipsum dolor</h2>
 							</header>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at dignissim augue, in iaculis neque. Etiam bibendum felis ac vulputate pellentesque. Cras non blandit quam. Nunc porta, est non posuere sagittis, neque nunc pellentesque diam, a iaculis lacus urna vitae purus. In non dui vel est tempor faucibus. Aliquam erat volutpat. Quisque vel est vitae nibh laoreet auctor. In nec libero dui. Nulla ullamcorper, dolor nec accumsan viverra, libero eros rutrum metus, vel lacinia magna odio non nunc. Praesent semper felis eu rhoncus aliquam. Donec at quam ac libero vestibulum pretium. Nunc faucibus vel arcu in malesuada. Aenean at velit odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas commodo erat eget molestie sollicitudin. Donec imperdiet, ex sed blandit dictum, ipsum metus ultrices arcu, vitae euismod nisl sapien vitae tortor.</p>
-
-							<p>Vivamus nec odio ac ligula congue feugiat at vitae leo. Aenean sem justo, finibus sed dui eu, accumsan facilisis dolor. Fusce quis dui eget odio iaculis aliquam vel sed velit. Nulla pellentesque posuere semper. Nulla eu sagittis lorem, a auctor nulla. Sed ac condimentum orci, ac varius ante. Nunc blandit quam sit amet sollicitudin sodales.</p>
-
-							<p>Vivamus ultricies mollis mauris quis molestie. Quisque eu mi velit. In et cursus nibh. Donec facilisis, orci sed mollis hendrerit, nunc risus mattis odio, eget efficitur nisl orci a lectus. Aenean finibus neque convallis orci sollicitudin tincidunt. Vivamus lacinia facilisis diam, quis facilisis nisi luctus nec. Aliquam ac molestie enim, ut ultrices elit. Fusce laoreet vulputate risus in tincidunt. Sed commodo mollis maximus. Nullam varius laoreet nibh sit amet facilisis. Donec ac odio vehicula, consequat elit et, sodales justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam ac auctor mauris, in hendrerit libero. </p>
 						</div>
 					</div>
 				</div>
