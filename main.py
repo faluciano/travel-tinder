@@ -6,10 +6,13 @@ import googlemaps
 app = Flask(__name__) 
 seckey = os.urandom(12)
 app.secret_key=seckey
-app.permanent_session_lifetime = timedelta(minutes = 5)
+key = os.environ["googleapikey"]
+app.permanent_session_lifetime = timedelta(minutes = 10)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.sqlite3"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
+gmaps = googlemaps.Client(key = key)
+
 
 class users(db.Model):
     _id = db.Column("id",db.Integer,primary_key=True)
@@ -55,7 +58,7 @@ def login():
 
 @app.route("/logout")
 def logout():
-    session["login"] = False
+    session.clear()
     return redirect(url_for("mainpage"))
 
 @app.route("/register",methods = ["POST","GET"])  
@@ -84,15 +87,30 @@ def use():
     m = users.query.all()
     x = ""
     for user in m:
-        print(user)
-    return "d"
+        x+=f"Your mom:"
+        x+=f"<p>{user.email}</p>"
+        x+=f"<p>{user.name}</p>"
+        x+=f"<p>{user.password}</p>"
+    return x
 
 @app.route("/generic",methods = ["POST","GET"])
 def generic():
     name = "dude"
+    listplc = []
     if "name" in session:
         name = session["name"]
-    return render_template("generic.html",name = name)
+    if request.method == "POST":
+        location = request.form["location"]
+        placetype = request.form["placetype"]
+        loc = tuple(gmaps.geocode(address = location)[0]["geometry"]["location"].values())
+        plac = gmaps.places(query = "",location = loc,language="en",type = placetype)
+        listplc = []
+        print(plac,"hi")
+        for i in plac["results"]:
+            if "photos" in i and "formatted_address" in i and "name" in i:
+                listplc.append({"name":i["name"],"address":i["formatted_address"],"photo":"https://maps.googleapis.com/maps/api/place/photo?maxheight=385&maxwidth=300&photoreference="+i["photos"][0]["photo_reference"]+"&key="+key})
+        return render_template("generic.html",name = name,loop=True,places = listplc)
+    return render_template("generic.html",name = name,loop = False, places = listplc)
 
 if __name__ == "__main__":
     db.create_all()

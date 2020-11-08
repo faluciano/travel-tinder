@@ -1,0 +1,151 @@
+body{
+    background: #36648b;
+    background-position: 90% 60%;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .title{
+    margin: 50px auto 0 auto;
+    text-align:center;
+    color: #fff;
+    font-size: 32px;
+  }
+  
+  .gallery.box{
+    width: 100%;
+    height:405px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 1%;
+    border: 10px #fff solid;
+  }
+  
+  .gallery .card{
+      position: relative;
+  }
+  
+  .gallery .background, .gallery .column{
+    height: 405px;
+  }
+  
+  .gallery .column{
+    width: 20%;
+    float: left;
+  }
+  
+  .gallery .column.col1{
+    background-color: #325C7D;
+  }
+  
+  .gallery .column.col2{
+    background-color: #6C5B7B;
+  }
+  
+  .gallery .column.col3{
+    background-color: #C26D85;
+  }
+  
+  .gallery .column.col4{
+    background-color: #EB7180;
+  }
+  .gallery .column.col5{
+    background-color: #F5B195;
+  }
+  
+  .gallery .overlay{
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left:0;
+      right: 0;
+      opacity: 0;
+    background-color: #000;
+      -webkit-transition: opacity 0.35s;
+      -o-transition: opacity 0.35s;
+      transition: opacity 0.35s;
+  }
+  
+  .gallery .info,
+  .gallery .foot{
+      -webkit-transition: bottom 0.35s;
+      -o-transition: bottom 0.35s;
+      transition: bottom 0.35s;
+  }
+  
+  .gallery .info{
+      position: absolute;
+      bottom: -35px;
+      width: 100%;
+  }
+  
+  .gallery .info h2 a{
+    color: #fff;
+    display: block;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    text-decoration:none;
+  }
+  
+  .gallery .info h2{
+      line-height: 24px;
+      font-size: 18px;
+    padding: 0 10px;
+    font-weight: 400;
+  }
+  
+  .gallery .foot{
+      height: 35px;
+      bottom: -35px;
+      position: relative;
+      color: #fff;
+    padding: 0 10px;
+    
+  }
+  
+  .gallery .foot .social{
+      float: left;
+      color: #fff;
+      font-size: 20px;
+  }
+  
+  .gallery .foot .line{
+      height: 2px;
+      display: block;
+      margin: 10px 0;
+    background-color: #fff;
+    margin-top: 20px;
+    width: 0%;
+    transition: width 0.6s;
+  }
+  
+  .gallery .date{
+    font-weight: 300;
+  }
+  
+  .gallery .fa-camera-retro{
+    top: 0;
+    left: 0;
+    padding: 10px 10px;
+    position: absolute;
+    color: #fff;
+    font-size: 24px;
+    z-index: 1;
+    transition: font-size 0.35s;
+  }
+  
+  /* All hovers here! */
+  .gallery:hover .info,
+  .gallery:hover .foot{
+      bottom:10px;
+  }
+  
+  .gallery:hover .overlay{
+      opacity: 0.5;
+  }
+  
+  .gallery:hover .foot .line{
+    width: 100%;
+  }
+  
+  .gallery:hover .fa-camera-retro{
+    font-size:32px;
+  }

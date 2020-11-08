@@ -44,11 +44,14 @@ border: none;
 border-bottom: 1px solid #eee;
 }
 input::placeholder {
-color: #eee;
+color: black !important;
 }
 option {
-background: black; 
+background-color: black; 
 border: none;
+}
+.specialColor{
+    background-color: rgba(0, 0, 0, 0.9);
 }
 .metod {
 display: flex; 
