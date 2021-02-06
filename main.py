@@ -93,7 +93,7 @@ def use():
     m = users.query.all()
     x = ""
     for user in m:
-        x+=f"Your mom:"
+        x+=f"Test:"
         x+=f"<p>{user.email}</p>"
         x+=f"<p>{user.name}</p>"
         x+=f"<p>{user.password}</p>"
