@@ -33,16 +33,7 @@ class users(db.Model):
     
     def set_preferences(self,val):
         self.preferences += ";" +str(val)
-'''
-@app.route("/preferences",methods = ["POST","GET"])  
-def preferences():
-    if "login" in session and session["login"] == True:
-        return redirect(url_for("mainpage"))
-    if request.method == "POST":
-        return  redirect(url_for("mainpage"))
-    else:
-        return render_template("preferences.html")
-'''
+        
 @app.route("/login",methods = ["POST","GET"])  
 def login():
     if "login" in session and session["login"] == True:
