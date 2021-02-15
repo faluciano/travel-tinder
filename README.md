@@ -10,7 +10,8 @@ Look at previously liked locations
 
 ### To run 
 
-set up google API key\
+Set up google API key named googleapikey\
+`pip install -r requirements.txt`\
 `python main.py`
 
 ## What?
@@ -20,3 +21,8 @@ This was built using Flask, HTML, CSS and some javascript.
 ## Why?
 
 This was part of a hackathon in which we won the prize for the theme of the hackathon. We thought it would be a cool idea to make tinder but for traveling in order to have interesting experiences when going abroad.
+
+## Credits
+
+The design for the cards was taken from codepen by user Benoit Proulx https://codepen.io/benproulx/pen/EjQMxQ
+Template for the main site was taken from https://templated.co/hielo
